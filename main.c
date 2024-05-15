@@ -81,7 +81,6 @@ void movePaddle() {
     else if ( paddle.rec.x > WIDTH - paddle.rec.width ) paddle.rec.x -= PADDLESPEED;
 }
 
-float bounceX = 0.0f;
 
 void botMovePaddle() {
     if ( ball.vel.y > 0.0f ) {
@@ -142,7 +141,6 @@ collideData blockBallCollide( Rectangle rec, u8 xMask, u8 yMask ) {
         data.state = 0;
         if ( ( ball.pos.x < rec.x || ball.pos.x > rec.x+rec.width  ) && !xMask ) { ball.vel.x = -ball.vel.x; data.xHit = 1; }
         if ( ( ball.pos.y < rec.y || ball.pos.y > rec.y+rec.height ) && !yMask ) { ball.vel.y = -ball.vel.y; data.yHit = 1; }
-        if ( ball.vel.y < 0.0f ) bounceX = ball.pos.x;
     }
 
     return data;
